@@ -520,8 +520,8 @@ function saveModalSelection(callback) {
 // ========================================
 function exportToJSON() {
     const exportData = {
-        INSTRUCCIONES: '⚠️ IMPORTANTE: Por favor envía este archivo por WhatsApp al 4775893607',
-        whatsapp: '4775893607',
+        INSTRUCCIONES: '⚠️ IMPORTANTE: Por favor envía este archivo por WhatsApp al 4779203776',
+        whatsapp: '4779203776',
         fecha_exportacion: new Date().toISOString(),
         evento: 'XV Años - Alexa Esmeralda',
         total_fotos: photos.length,
@@ -554,7 +554,7 @@ function exportToJSON() {
     a.click();
     URL.revokeObjectURL(url);
 
-    showToast('📥 Reporte descargado. ¡Envíalo por WhatsApp al 4775893607!', 'success');
+    showToast('📥 Reporte descargado. ¡Envíalo por WhatsApp al 4779203776!', 'success');
 }
 
 function generateTextSummary() {
