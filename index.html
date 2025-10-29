@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Invitación a los XV años de Alexa Esmeralda - 6 de diciembre de 2025">
+    <meta name="description" content="Invitación a los XV años de Alexa Esmeralda - 15 de noviembre de 2025">
     <meta name="theme-color" content="#064420">
     <title>XV Años - Alexa Esmeralda</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -837,10 +837,7 @@
                 <!-- Ceremony -->
                 <div class="event-card">
                     <span class="event-icon"><i class="fas fa-church"></i></span>
-                    <h3 class="event-title">Ceremonia Religiosa</h3>
-                    <div class="event-info">
-                        <strong><i class="fas fa-calendar-alt"></i> Fecha</strong>
-                        Sábado, 6 de diciembre de 2025
+                    <h3 class="event-title">Sábado, 15 de noviembre de 2025
                     </div>
                     <div class="event-info">
                         <strong><i class="fas fa-clock"></i> Hora</strong>
@@ -864,7 +861,7 @@
                     <h3 class="event-title">Recepción</h3>
                     <div class="event-info">
                         <strong><i class="fas fa-calendar-alt"></i> Fecha</strong>
-                        Sábado, 6 de diciembre de 2025
+                        Sábado, 15 de noviembre de 2025
                     </div>
                     <div class="event-info">
                         <strong><i class="fas fa-clock"></i> Hora</strong>
@@ -919,7 +916,7 @@
         <section>
             <h2 class="section-title"><i class="fas fa-envelope"></i> Confirma tu Asistencia</h2>
             <p style="text-align: center; margin-bottom: 30px; color: var(--cream);">
-                Por favor confirma tu asistencia antes del 25 de noviembre de 2025
+                Por favor confirma tu asistencia antes del 8 de noviembre de 2025
             </p>
             <div class="rsvp-form">
                 <form id="rsvpForm" onsubmit="submitRSVP(event)">
@@ -1022,7 +1019,7 @@
 
         <!-- Footer -->
         <footer>
-            <p style="font-size: 1.2rem; margin-bottom: 15px;"><i class="fas fa-sparkles"></i> ¡Nos vemos el 6 de diciembre! <i class="fas fa-sparkles"></i></p>
+            <p style="font-size: 1.2rem; margin-bottom: 15px;"><i class="fas fa-sparkles"></i> ¡Nos vemos el 15 de noviembre! <i class="fas fa-sparkles"></i></p>
             <div class="divider" style="margin: 20px auto;"></div>
             <p>Producciones Foro 7</p>
             <p>Fotografía, Video, Dron e Invitaciones Web</p>
@@ -1045,7 +1042,7 @@
     <script>
         // Countdown Timer
         function updateCountdown() {
-            const eventDate = new Date('2025-12-06T18:00:00').getTime();
+            const eventDate = new Date('2025-11-15T18:00:00').getTime();
             const now = new Date().getTime();
             const distance = eventDate - now;
 
@@ -1074,8 +1071,8 @@
             const location = type === 'ceremony'
                 ? 'Parroquia María Madre de la Iglesia, León, Guanajuato'
                 : 'Quinta El Ranchito, León, Guanajuato';
-            const startTime = type === 'ceremony' ? '20251206T180000' : '20251206T200000';
-            const endTime = type === 'ceremony' ? '20251206T190000' : '20251207T020000';
+            const startTime = type === 'ceremony' ? '20251115T180000' : '20251115T200000';
+            const endTime = type === 'ceremony' ? '20251115T190000' : '20251116T020000';
 
             const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startTime}/${endTime}&details=${encodeURIComponent('XV Años de Alexa Esmeralda')}&location=${encodeURIComponent(location)}`;
 
@@ -1102,7 +1099,7 @@
 ✅ Asistencia: ${attendance === 'si' ? 'Sí asistiré' : 'No podré asistir'}
 💬 Mensaje: ${message}
 
-📅 Fecha: 6 de diciembre de 2025
+📅 Fecha: 15 de noviembre de 2025
             `.trim();
 
             const whatsappUrl = `https://wa.me/524775893607?text=${encodeURIComponent(whatsappMessage)}`;
@@ -1117,8 +1114,7 @@
         }
 
         // Social Sharing
-        function shareWhatsApp() {
-            const text = '¡Estás invitado a mis XV años! 👑✨ - Alexa Esmeralda - 6 de diciembre de 2025';
+const text = '¡Estás invitado a mis XV años! 👑✨ - Alexa Esmeralda - 15 de noviembre de 2025';
             const url = window.location.href;
             window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
         }
@@ -1129,7 +1125,7 @@
         }
 
         function shareTwitter() {
-            const text = '¡Estás invitado a mis XV años! 👑✨ - Alexa Esmeralda - 6 de diciembre de 2025';
+            const text = '¡Estás invitado a mis XV años! 👑✨ - Alexa Esmeralda - 15 de noviembre de 2025';
             const url = window.location.href;
             window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
         }

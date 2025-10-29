@@ -185,7 +185,7 @@ function addWatermark(ctx, width, height, photoNumber) {
     ctx.textBaseline = 'middle';
 
     // Add watermark text
-    const watermarkText = 'Francisco & Rossy';
+    const watermarkText = 'Alexa Esmeralda';
     ctx.fillText(watermarkText, width / 2, height / 2);
 
     // Add smaller photo number in corner
