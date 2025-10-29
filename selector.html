@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -500,7 +501,7 @@
             <div class="container">
                 <div class="stats-row">
                     <div class="stat-card ampliacion">
-                        <div class="stat-icon">🖼️</div>
+                        <div class="stat-icon"><i class="fas fa-image"></i></div>
                         <div class="stat-info">
                             <h3>Ampliación</h3>
                             <p class="stat-count" id="countAmpliacion">0</p>
@@ -508,7 +509,7 @@
                         </div>
                     </div>
                     <div class="stat-card impresion">
-                        <div class="stat-icon">📸</div>
+                        <div class="stat-icon"><i class="fas fa-camera"></i></div>
                         <div class="stat-info">
                             <h3>Impresión</h3>
                             <p class="stat-count" id="countImpresion">0</p>
@@ -516,21 +517,21 @@
                         </div>
                     </div>
                     <div class="stat-card redes-sociales">
-                        <div class="stat-icon">📱</div>
+                        <div class="stat-icon"><i class="fas fa-share-alt"></i></div>
                         <div class="stat-info">
                             <h3>Redes Sociales</h3>
                             <p class="stat-count" id="countRedesSociales">0</p>
                         </div>
                     </div>
                     <div class="stat-card descartada">
-                        <div class="stat-icon">❌</div>
+                        <div class="stat-icon"><i class="fas fa-times-circle"></i></div>
                         <div class="stat-info">
                             <h3>Descartadas</h3>
                             <p class="stat-count" id="countDescartada">0</p>
                         </div>
                     </div>
                     <div class="stat-card sin-clasificar">
-                        <div class="stat-icon">⭕</div>
+                        <div class="stat-icon"><i class="far fa-circle"></i></div>
                         <div class="stat-info">
                             <h3>Sin Clasificar</h3>
                             <p class="stat-count" id="countSinClasificar">86</p>
@@ -548,10 +549,10 @@
                 </div>
 
                 <div class="action-buttons secondary">
-                    <button class="btn btn-export" id="btnExport">📥 Descargar Reporte</button>
-                    <button class="btn btn-share" id="btnShare">📤 Compartir por WhatsApp</button>
-                    <button class="btn btn-clear" id="btnClear">🗑️ Limpiar Todo</button>
-                    <a href="index.html" class="btn" style="background: var(--emerald-light);">← Volver a la Invitación</a>
+                    <button class="btn btn-export" id="btnExport"><i class="fas fa-download"></i> Descargar Reporte</button>
+                    <button class="btn btn-share" id="btnShare"><i class="fas fa-share"></i> Compartir por WhatsApp</button>
+                    <button class="btn btn-clear" id="btnClear"><i class="fas fa-trash-alt"></i> Limpiar Todo</button>
+                    <a href="index.html" class="btn" style="background: var(--emerald-light);"><i class="fas fa-arrow-left"></i> Volver a la Invitación</a>
                 </div>
             </div>
         </section>
@@ -581,24 +582,24 @@
 
                     <div class="option-buttons">
                         <button class="option-btn" data-category="ampliacion">
-                            <span class="option-icon">🖼️</span>
+                            <span class="option-icon"><i class="fas fa-image"></i></span>
                             <span class="option-text">Ampliación</span>
-                            <span class="option-check">✓</span>
+                            <span class="option-check"><i class="fas fa-check"></i></span>
                         </button>
                         <button class="option-btn" data-category="impresion">
-                            <span class="option-icon">📸</span>
+                            <span class="option-icon"><i class="fas fa-camera"></i></span>
                             <span class="option-text">Impresión</span>
-                            <span class="option-check">✓</span>
+                            <span class="option-check"><i class="fas fa-check"></i></span>
                         </button>
                         <button class="option-btn" data-category="redes_sociales">
-                            <span class="option-icon">📱</span>
+                            <span class="option-icon"><i class="fas fa-share-alt"></i></span>
                             <span class="option-text">Redes Sociales</span>
-                            <span class="option-check">✓</span>
+                            <span class="option-check"><i class="fas fa-check"></i></span>
                         </button>
                         <button class="option-btn" data-category="descartada">
-                            <span class="option-icon">❌</span>
+                            <span class="option-icon"><i class="fas fa-times-circle"></i></span>
                             <span class="option-text">Descartar</span>
-                            <span class="option-check">✓</span>
+                            <span class="option-check"><i class="fas fa-check"></i></span>
                         </button>
                     </div>
 
@@ -617,7 +618,7 @@
     <!-- Suggestions Section -->
     <div class="container">
         <section class="feedback-section" style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 40px 30px; margin: 30px 0; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.2);">
-            <h2 style="font-family: 'Playfair Display', serif; color: var(--gold); text-align: center; font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 20px;">💬 Sugerencias de Cambios en Fotos</h2>
+            <h2 style="font-family: 'Playfair Display', serif; color: var(--gold); text-align: center; font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 20px;"><i class="fas fa-comments"></i> Sugerencias de Cambios en Fotos</h2>
             <p style="text-align: center; color: var(--cream); margin-bottom: 30px;">
                 Si deseas sugerir algún cambio o edición en alguna foto, agrégalo aquí
             </p>
@@ -645,13 +646,13 @@
                         onmouseover="this.style.background='var(--gold-light)'"
                         onmouseout="this.style.background='var(--gold)'"
                     >
-                        ➕ Agregar
+                        <i class="fas fa-plus"></i> Agregar
                     </button>
                 </div>
 
                 <div style="margin-top: 30px; padding: 20px; background: rgba(33, 150, 243, 0.1); border-left: 4px solid #2196f3; border-radius: 8px;">
                     <p style="margin: 0; color: var(--cream); font-size: 0.95rem;">
-                        <strong style="color: var(--gold);">📱 Importante:</strong> Cuando descargues tu reporte, por favor envíalo por WhatsApp al <strong style="color: var(--gold);">477-920-3776</strong>
+                        <strong style="color: var(--gold);"><i class="fas fa-mobile-alt"></i> Importante:</strong> Cuando descargues tu reporte, por favor envíalo por WhatsApp al <strong style="color: var(--gold);">477-920-3776</strong>
                     </p>
                 </div>
             </div>

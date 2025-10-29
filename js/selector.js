@@ -245,10 +245,10 @@ function renderGallery() {
         let badgesHTML = '';
         if (hasAny) {
             badgesHTML = '<div class="photo-badges">';
-            if (selection.ampliacion) badgesHTML += '<span class="badge badge-ampliacion">🖼️ Ampliación</span>';
-            if (selection.impresion) badgesHTML += '<span class="badge badge-impresion">📸 Impresión</span>';
-            if (selection.redes_sociales) badgesHTML += '<span class="badge badge-redes-sociales">📱 Redes Sociales</span>';
-            if (selection.descartada) badgesHTML += '<span class="badge badge-descartada">❌ Descartada</span>';
+            if (selection.ampliacion) badgesHTML += '<span class="badge badge-ampliacion"><i class="fas fa-image"></i> Ampliación</span>';
+            if (selection.impresion) badgesHTML += '<span class="badge badge-impresion"><i class="fas fa-camera"></i> Impresión</span>';
+            if (selection.redes_sociales) badgesHTML += '<span class="badge badge-redes-sociales"><i class="fas fa-share-alt"></i> Redes Sociales</span>';
+            if (selection.descartada) badgesHTML += '<span class="badge badge-descartada"><i class="fas fa-times-circle"></i> Descartada</span>';
             badgesHTML += '</div>';
         }
 
@@ -554,7 +554,7 @@ function exportToJSON() {
     a.click();
     URL.revokeObjectURL(url);
 
-    showToast('📥 Reporte descargado. ¡Envíalo por WhatsApp al 4779203776!', 'success');
+    showToast('Reporte descargado. ¡Envíalo por WhatsApp al 4779203776!', 'success');
 }
 
 function generateTextSummary() {
@@ -860,9 +860,9 @@ function renderFeedbackLists() {
     } else {
         photoList.innerHTML = feedbackData.photos.map((item, index) => `
             <div style="display: flex; align-items: center; gap: 10px; padding: 12px; background: rgba(255, 255, 255, 0.08); border-radius: 10px; margin-bottom: 10px; border: 1px solid rgba(212, 175, 55, 0.3);">
-                <span style="font-weight: 600; color: var(--gold); min-width: 70px; font-size: 1rem;">📸 #${item.photoNumber}</span>
+                <span style="font-weight: 600; color: var(--gold); min-width: 70px; font-size: 1rem;"><i class="fas fa-camera"></i> #${item.photoNumber}</span>
                 <span style="flex: 1; color: var(--cream); font-size: 0.95rem;">${item.change}</span>
-                <button onclick="removePhotoFeedback(${index})" style="padding: 8px 12px; background: #f44336; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s ease;" onmouseover="this.style.background='#d32f2f'" onmouseout="this.style.background='#f44336'">🗑️</button>
+                <button onclick="removePhotoFeedback(${index})" style="padding: 8px 12px; background: #f44336; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s ease;" onmouseover="this.style.background='#d32f2f'" onmouseout="this.style.background='#f44336'"><i class="fas fa-trash-alt"></i></button>
             </div>
         `).join('');
     }

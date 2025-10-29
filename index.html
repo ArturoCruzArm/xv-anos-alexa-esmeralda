@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -572,16 +573,16 @@
 </head>
 <body>
     <!-- Floating Flowers -->
-    <div class="floating-flower" style="left: 10%; animation-delay: 0s;">🌹</div>
-    <div class="floating-flower" style="left: 30%; animation-delay: 3s;">🌺</div>
-    <div class="floating-flower" style="left: 50%; animation-delay: 6s;">🌸</div>
-    <div class="floating-flower" style="left: 70%; animation-delay: 9s;">🌹</div>
-    <div class="floating-flower" style="left: 90%; animation-delay: 12s;">🌺</div>
+    <div class="floating-flower" style="left: 10%; animation-delay: 0s;">❀</div>
+    <div class="floating-flower" style="left: 30%; animation-delay: 3s;">✿</div>
+    <div class="floating-flower" style="left: 50%; animation-delay: 6s;">❁</div>
+    <div class="floating-flower" style="left: 70%; animation-delay: 9s;">❀</div>
+    <div class="floating-flower" style="left: 90%; animation-delay: 12s;">✿</div>
 
     <div class="container">
         <!-- Header -->
         <header>
-            <div class="crown">👑</div>
+            <div class="crown"><i class="fas fa-crown"></i></div>
             <h1 class="main-title">MIS XV AÑOS</h1>
             <h2 class="quinceañera-name">Alexa Esmeralda</h2>
             <div class="divider"></div>
@@ -595,7 +596,7 @@
 
         <!-- Countdown -->
         <section>
-            <h2 class="section-title">⏰ Cuenta Regresiva</h2>
+            <h2 class="section-title"><i class="fas fa-clock"></i> Cuenta Regresiva</h2>
             <div class="countdown" id="countdown">
                 <div class="countdown-item">
                     <span class="countdown-value" id="days">00</span>
@@ -618,10 +619,10 @@
 
         <!-- Family -->
         <section>
-            <h2 class="section-title">👨‍👩‍👧 Mi Familia</h2>
+            <h2 class="section-title"><i class="fas fa-users"></i> Mi Familia</h2>
             <div class="family-section">
                 <div class="family-card">
-                    <div class="family-icon">👨‍👩‍👧</div>
+                    <div class="family-icon"><i class="fas fa-home"></i></div>
                     <div class="family-role">Mis Padres</div>
                     <div class="family-names">
                         Gilberto Delgado Ramos<br>
@@ -629,7 +630,7 @@
                     </div>
                 </div>
                 <div class="family-card">
-                    <div class="family-icon">💝</div>
+                    <div class="family-icon"><i class="fas fa-heart"></i></div>
                     <div class="family-role">Mis Padrinos</div>
                     <div class="family-names">
                         Roberto Carlos Silva Ramírez<br>
@@ -641,53 +642,53 @@
 
         <!-- Event Details -->
         <section>
-            <h2 class="section-title">📍 Detalles del Evento</h2>
+            <h2 class="section-title"><i class="fas fa-map-marker-alt"></i> Detalles del Evento</h2>
             <div class="event-details">
                 <!-- Ceremony -->
                 <div class="event-card">
-                    <span class="event-icon">⛪</span>
+                    <span class="event-icon"><i class="fas fa-church"></i></span>
                     <h3 class="event-title">Ceremonia Religiosa</h3>
                     <div class="event-info">
-                        <strong>📅 Fecha</strong>
+                        <strong><i class="fas fa-calendar-alt"></i> Fecha</strong>
                         Sábado, 6 de diciembre de 2025
                     </div>
                     <div class="event-info">
-                        <strong>🕕 Hora</strong>
+                        <strong><i class="fas fa-clock"></i> Hora</strong>
                         18:00 hrs
                     </div>
                     <div class="event-info">
-                        <strong>📍 Lugar</strong>
+                        <strong><i class="fas fa-map-marker-alt"></i> Lugar</strong>
                         Parroquia María Madre de la Iglesia<br>
                         Blvd. Juan Alonso de Torres Pte. 2002<br>
                         León, Guanajuato
                     </div>
                     <div style="margin-top: 20px;">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Parroquia+María+Madre+de+la+Iglesia+León+Guanajuato" target="_blank" class="btn">📍 Ver Mapa</a>
-                        <button onclick="addToCalendar('ceremony')" class="btn btn-secondary">📅 Agendar</button>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Parroquia+María+Madre+de+la+Iglesia+León+Guanajuato" target="_blank" class="btn"><i class="fas fa-map-marked-alt"></i> Ver Mapa</a>
+                        <button onclick="addToCalendar('ceremony')" class="btn btn-secondary"><i class="fas fa-calendar-plus"></i> Agendar</button>
                     </div>
                 </div>
 
                 <!-- Reception -->
                 <div class="event-card">
-                    <span class="event-icon">🎉</span>
+                    <span class="event-icon"><i class="fas fa-glass-cheers"></i></span>
                     <h3 class="event-title">Recepción</h3>
                     <div class="event-info">
-                        <strong>📅 Fecha</strong>
+                        <strong><i class="fas fa-calendar-alt"></i> Fecha</strong>
                         Sábado, 6 de diciembre de 2025
                     </div>
                     <div class="event-info">
-                        <strong>🕗 Hora</strong>
+                        <strong><i class="fas fa-clock"></i> Hora</strong>
                         20:00 hrs
                     </div>
                     <div class="event-info">
-                        <strong>📍 Lugar</strong>
+                        <strong><i class="fas fa-map-marker-alt"></i> Lugar</strong>
                         Quinta El Ranchito<br>
                         Camino a Comanjilla SN<br>
                         León, Guanajuato
                     </div>
                     <div style="margin-top: 20px;">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Quinta+El+Ranchito+León+Guanajuato" target="_blank" class="btn">📍 Ver Mapa</a>
-                        <button onclick="addToCalendar('reception')" class="btn btn-secondary">📅 Agendar</button>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Quinta+El+Ranchito+León+Guanajuato" target="_blank" class="btn"><i class="fas fa-map-marked-alt"></i> Ver Mapa</a>
+                        <button onclick="addToCalendar('reception')" class="btn btn-secondary"><i class="fas fa-calendar-plus"></i> Agendar</button>
                     </div>
                 </div>
             </div>
@@ -695,16 +696,16 @@
 
         <!-- Maps -->
         <section>
-            <h2 class="section-title">🗺️ Ubicaciones</h2>
+            <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> Ubicaciones</h2>
             <div class="event-details">
                 <div>
-                    <h3 style="text-align: center; color: var(--gold); margin-bottom: 15px;">⛪ Ceremonia</h3>
+                    <h3 style="text-align: center; color: var(--gold); margin-bottom: 15px;"><i class="fas fa-church"></i> Ceremonia</h3>
                     <div class="map-container">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.9!2d-101.67!3d21.13!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDA3JzQ4LjAiTiAxMDHCsDQwJzEyLjAiVw!5e0!3m2!1sen!2smx!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
                 <div>
-                    <h3 style="text-align: center; color: var(--gold); margin-bottom: 15px;">🎉 Recepción</h3>
+                    <h3 style="text-align: center; color: var(--gold); margin-bottom: 15px;"><i class="fas fa-glass-cheers"></i> Recepción</h3>
                     <div class="map-container">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.5!2d-101.65!3d21.12!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDA3JzEyLjAiTiAxMDHCsDM5JzAwLjAiVw!5e0!3m2!1sen!2smx!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
                     </div>
@@ -714,9 +715,9 @@
 
         <!-- Dress Code -->
         <section>
-            <h2 class="section-title">👗 Código de Vestimenta</h2>
+            <h2 class="section-title"><i class="fas fa-tshirt"></i> Código de Vestimenta</h2>
             <div class="dress-code">
-                <div class="dress-code-icons">👔 👗</div>
+                <div class="dress-code-icons"><i class="fas fa-user-tie"></i> <i class="fas fa-female"></i></div>
                 <p class="dress-code-text">FORMAL / ELEGANTE</p>
                 <p style="margin-top: 15px; font-size: 1rem; color: var(--cream);">
                     Te pedimos asistir con vestimenta formal para hacer de esta noche una ocasión aún más especial
@@ -726,7 +727,7 @@
 
         <!-- RSVP -->
         <section>
-            <h2 class="section-title">✉️ Confirma tu Asistencia</h2>
+            <h2 class="section-title"><i class="fas fa-envelope"></i> Confirma tu Asistencia</h2>
             <p style="text-align: center; margin-bottom: 30px; color: var(--cream);">
                 Por favor confirma tu asistencia antes del 25 de noviembre de 2025
             </p>
@@ -764,23 +765,23 @@
                         <textarea id="message" name="message" placeholder="Déjame un mensaje..."></textarea>
                     </div>
                     <div style="text-align: center;">
-                        <button type="submit" class="btn">📤 Enviar Confirmación</button>
+                        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Enviar Confirmación</button>
                     </div>
                 </form>
                 <div id="successMessage" class="success-message">
-                    ✅ ¡Gracias! Tu confirmación ha sido enviada correctamente.
+                    <i class="fas fa-check-circle"></i> ¡Gracias! Tu confirmación ha sido enviada correctamente.
                 </div>
             </div>
         </section>
 
         <!-- Photo Gallery -->
         <section>
-            <h2 class="section-title">📸 Galería de Fotos</h2>
+            <h2 class="section-title"><i class="fas fa-camera"></i> Galería de Fotos</h2>
             <p style="text-align: center; margin-bottom: 30px; color: var(--cream);">
                 Ayúdame a seleccionar las mejores fotos para imprimir y compartir
             </p>
             <div style="text-align: center; margin-bottom: 30px;">
-                <a href="selector.html" class="btn">🖼️ Ir al Selector de Fotos</a>
+                <a href="selector.html" class="btn"><i class="fas fa-images"></i> Ir al Selector de Fotos</a>
             </div>
             <div class="gallery-preview" id="galleryPreview">
                 <!-- Preview photos will be loaded here -->
@@ -789,26 +790,26 @@
 
         <!-- Gift Registry -->
         <section class="gift-registry">
-            <h2 class="section-title">🎁 Mesa de Regalos</h2>
+            <h2 class="section-title"><i class="fas fa-gift"></i> Mesa de Regalos</h2>
             <p style="margin-bottom: 30px; color: var(--cream); font-size: 1.1rem;">
                 Tu presencia es el mejor regalo, pero si deseas obsequiarme algo, aquí te dejo algunas opciones
             </p>
             <div class="gift-options">
                 <div class="gift-option">
-                    <div class="gift-icon">🏪</div>
+                    <div class="gift-icon"><i class="fas fa-store"></i></div>
                     <a href="#" class="btn">Liverpool</a>
                 </div>
                 <div class="gift-option">
-                    <div class="gift-icon">🛍️</div>
+                    <div class="gift-icon"><i class="fab fa-amazon"></i></div>
                     <a href="#" class="btn">Amazon</a>
                 </div>
                 <div class="gift-option">
-                    <div class="gift-icon">💰</div>
+                    <div class="gift-icon"><i class="fas fa-money-bill-wave"></i></div>
                     <button onclick="showTransferInfo()" class="btn">Transferencia</button>
                 </div>
             </div>
             <div id="transferInfo" style="display: none; margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px;">
-                <p style="color: var(--gold); font-size: 1.2rem; margin-bottom: 15px;">💳 Información de Transferencia</p>
+                <p style="color: var(--gold); font-size: 1.2rem; margin-bottom: 15px;"><i class="fas fa-credit-card"></i> Información de Transferencia</p>
                 <p style="color: var(--cream);">Banco: [Nombre del banco]</p>
                 <p style="color: var(--cream);">Cuenta: [Número de cuenta]</p>
                 <p style="color: var(--cream);">CLABE: [CLABE interbancaria]</p>
@@ -817,25 +818,25 @@
 
         <!-- Social Share -->
         <section class="social-share">
-            <h2 class="section-title">📱 Comparte</h2>
+            <h2 class="section-title"><i class="fas fa-share-alt"></i> Comparte</h2>
             <p style="margin-bottom: 20px; color: var(--cream);">
                 Ayúdame a compartir esta invitación con tus amigos y familiares
             </p>
             <div class="social-icons">
-                <a href="#" onclick="shareWhatsApp()" class="social-icon" title="WhatsApp">📱</a>
-                <a href="#" onclick="shareFacebook()" class="social-icon" title="Facebook">📘</a>
-                <a href="#" onclick="shareTwitter()" class="social-icon" title="Twitter">🐦</a>
-                <a href="#" onclick="copyLink()" class="social-icon" title="Copiar enlace">🔗</a>
+                <a href="#" onclick="shareWhatsApp()" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" onclick="shareFacebook()" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" onclick="shareTwitter()" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" onclick="copyLink()" class="social-icon" title="Copiar enlace"><i class="fas fa-link"></i></a>
             </div>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p style="font-size: 1.2rem; margin-bottom: 15px;">✨ ¡Nos vemos el 6 de diciembre! ✨</p>
+            <p style="font-size: 1.2rem; margin-bottom: 15px;"><i class="fas fa-sparkles"></i> ¡Nos vemos el 6 de diciembre! <i class="fas fa-sparkles"></i></p>
             <div class="divider" style="margin: 20px auto;"></div>
             <p>Producciones Foro 7</p>
             <p>Fotografía, Video, Dron e Invitaciones Web</p>
-            <p>📞 Contacto: 477-920-3776</p>
+            <p><i class="fas fa-phone-alt"></i> Contacto: 477-920-3776</p>
             <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">
                 © 2025 - Alexa Esmeralda XV Años
             </p>
@@ -937,7 +938,7 @@
         function copyLink() {
             const url = window.location.href;
             navigator.clipboard.writeText(url).then(() => {
-                alert('✅ ¡Enlace copiado al portapapeles!');
+                alert('¡Enlace copiado al portapapeles!');
             }).catch(() => {
                 prompt('Copia este enlace:', url);
             });
