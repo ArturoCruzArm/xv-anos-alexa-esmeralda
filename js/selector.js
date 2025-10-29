@@ -526,7 +526,10 @@ function exportToJSON() {
         evento: 'XV Años - Alexa Esmeralda',
         total_fotos: photos.length,
         estadisticas: getStats(),
-        selecciones: []
+        selecciones: [],
+        sugerencias_de_cambios: {
+            fotos: feedbackData.photos.length > 0 ? feedbackData.photos : 'Sin cambios sugeridos'
+        }
     };
 
     photos.forEach((photo, index) => {
@@ -589,6 +592,15 @@ function generateTextSummary() {
             summary += `   Total: ${photosInCategory.length}\n\n`;
         }
     });
+
+    // Add feedback section
+    if (feedbackData.photos.length > 0) {
+        summary += `\n💬 SUGERENCIAS DE CAMBIOS EN FOTOS:\n`;
+        feedbackData.photos.forEach(item => {
+            summary += `   📸 Foto #${item.photoNumber}: ${item.change}\n`;
+        });
+        summary += '\n';
+    }
 
     summary += `\n📅 Generado el: ${new Date().toLocaleString('es-MX')}\n`;
 
@@ -770,4 +782,93 @@ document.addEventListener('visibilitychange', () => {
 // ========================================
 window.addEventListener('beforeunload', (e) => {
     saveSelections();
+});
+
+// ========================================
+// FEEDBACK MANAGEMENT
+// ========================================
+const FEEDBACK_KEY = 'alexa_xv_feedback';
+let feedbackData = {
+    photos: []
+};
+
+// Load feedback from localStorage
+function loadFeedback() {
+    try {
+        const saved = localStorage.getItem(FEEDBACK_KEY);
+        if (saved) {
+            feedbackData = JSON.parse(saved);
+            renderFeedbackLists();
+        }
+    } catch (error) {
+        console.error('Error loading feedback:', error);
+    }
+}
+
+// Save feedback to localStorage
+function saveFeedback() {
+    try {
+        localStorage.setItem(FEEDBACK_KEY, JSON.stringify(feedbackData));
+    } catch (error) {
+        console.error('Error saving feedback:', error);
+    }
+}
+
+// Add photo feedback
+function addPhotoFeedback() {
+    const photoNumber = document.getElementById('photoNumber').value.trim();
+    const change = document.getElementById('photoChange').value.trim();
+
+    if (!photoNumber || !change) {
+        showToast('Por favor completa ambos campos', 'error');
+        return;
+    }
+
+    if (photoNumber < 1 || photoNumber > TOTAL_PHOTOS) {
+        showToast(`El número de foto debe estar entre 1 y ${TOTAL_PHOTOS}`, 'error');
+        return;
+    }
+
+    feedbackData.photos.push({ photoNumber: parseInt(photoNumber), change });
+    saveFeedback();
+    renderFeedbackLists();
+
+    // Clear inputs
+    document.getElementById('photoNumber').value = '';
+    document.getElementById('photoChange').value = '';
+
+    showToast('Sugerencia de foto agregada', 'success');
+}
+
+// Remove photo feedback
+function removePhotoFeedback(index) {
+    feedbackData.photos.splice(index, 1);
+    saveFeedback();
+    renderFeedbackLists();
+    showToast('Sugerencia eliminada', 'success');
+}
+
+// Render feedback lists
+function renderFeedbackLists() {
+    const photoList = document.getElementById('photoFeedbackList');
+
+    if (!photoList) return;
+
+    // Render photo feedback
+    if (feedbackData.photos.length === 0) {
+        photoList.innerHTML = '<p style="color: rgba(250, 248, 243, 0.5); font-style: italic; margin: 10px 0; text-align: center;">No hay sugerencias de cambios</p>';
+    } else {
+        photoList.innerHTML = feedbackData.photos.map((item, index) => `
+            <div style="display: flex; align-items: center; gap: 10px; padding: 12px; background: rgba(255, 255, 255, 0.08); border-radius: 10px; margin-bottom: 10px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                <span style="font-weight: 600; color: var(--gold); min-width: 70px; font-size: 1rem;">📸 #${item.photoNumber}</span>
+                <span style="flex: 1; color: var(--cream); font-size: 0.95rem;">${item.change}</span>
+                <button onclick="removePhotoFeedback(${index})" style="padding: 8px 12px; background: #f44336; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s ease;" onmouseover="this.style.background='#d32f2f'" onmouseout="this.style.background='#f44336'">🗑️</button>
+            </div>
+        `).join('');
+    }
+}
+
+// Load feedback on page load
+document.addEventListener('DOMContentLoaded', () => {
+    loadFeedback();
 });
