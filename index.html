@@ -725,6 +725,30 @@
             text-align: center;
             display: none;
         }
+
+        #audio-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #play-pause-btn {
+            background-color: var(--gold);
+            color: var(--emerald-dark);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        #play-pause-btn:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -1010,6 +1034,14 @@
         </footer>
     </div>
 
+    <!-- Audio Player -->
+    <audio id="background-audio" loop>
+        <source src="audio/_Brilla Esmeralda_ (Canción original para Alexa Esmeralda).mp3" type="audio/mpeg">
+    </audio>
+    <div id="audio-controls">
+        <button id="play-pause-btn"><i class="fas fa-play"></i></button>
+    </div>
+
     <script>
         // Countdown Timer
         function updateCountdown() {
@@ -1192,6 +1224,42 @@
                 e.preventDefault();
                 return false;
             }
+        });
+
+        // Audio Player
+        const audio = document.getElementById('background-audio');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const playIcon = '<i class="fas fa-play"></i>';
+        const pauseIcon = '<i class="fas fa-pause"></i>';
+
+        // Attempt to play audio on user interaction
+        document.body.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playPauseBtn.innerHTML = pauseIcon;
+                }).catch(error => {
+                    console.log("Autoplay was prevented. Please click the play button.");
+                });
+            }
+        }, { once: true });
+
+
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.innerHTML = pauseIcon;
+            } else {
+                audio.pause();
+                playPauseBtn.innerHTML = playIcon;
+            }
+        });
+
+        audio.addEventListener('play', () => {
+            playPauseBtn.innerHTML = pauseIcon;
+        });
+
+        audio.addEventListener('pause', () => {
+            playPauseBtn.innerHTML = playIcon;
         });
     </script>
 </body>
