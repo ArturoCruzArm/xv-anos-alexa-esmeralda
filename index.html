@@ -501,6 +501,150 @@
             margin: 10px 0;
         }
 
+        /* Fixed Rose Decorations */
+        .fixed-roses {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .rose-decoration {
+            position: fixed;
+            opacity: 0.85;
+            pointer-events: none;
+        }
+
+        .rose-decoration.top-left {
+            top: -20px;
+            left: -20px;
+            width: min(450px, 35vw);
+            animation: gentleFloat 8s ease-in-out infinite;
+        }
+
+        .rose-decoration.bottom-right {
+            bottom: -20px;
+            right: -20px;
+            width: min(500px, 40vw);
+            animation: gentleFloat 10s ease-in-out infinite reverse;
+        }
+
+        .rose-decoration img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-15px) translateX(5px) rotate(1deg);
+            }
+            66% {
+                transform: translateY(10px) translateX(-5px) rotate(-1deg);
+            }
+        }
+
+        /* Text Animation Effects */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Delay classes for staggered animations */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+        .delay-6 { transition-delay: 0.6s; }
+
+        /* Additional animation keyframes */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(12px); }
+        }
+
+        /* Apply fadeUp to sections */
+        section {
+            animation: fadeUp 0.8s ease-out;
+        }
+
         /* Floating Flowers Animation */
         .floating-flower {
             position: fixed;
@@ -529,6 +673,11 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .rose-decoration.top-left,
+            .rose-decoration.bottom-right {
+                width: 200px;
+            }
+
             .countdown {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -548,6 +697,13 @@
             .btn {
                 padding: 12px 30px;
                 font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .rose-decoration.top-left,
+            .rose-decoration.bottom-right {
+                width: 150px;
             }
         }
 
@@ -572,6 +728,16 @@
     </style>
 </head>
 <body>
+    <!-- Fixed Rose Decorations -->
+    <div class="fixed-roses">
+        <div class="rose-decoration top-left">
+            <img src="rosa-izquierda.png" alt="" aria-hidden="true">
+        </div>
+        <div class="rose-decoration bottom-right">
+            <img src="rosa-derecha.png" alt="" aria-hidden="true">
+        </div>
+    </div>
+
     <!-- Floating Flowers -->
     <div class="floating-flower" style="left: 10%; animation-delay: 0s;">❀</div>
     <div class="floating-flower" style="left: 30%; animation-delay: 3s;">✿</div>
@@ -978,6 +1144,29 @@
                 }
             });
         });
+
+        // Intersection Observer for Scroll Animations
+        function initScrollAnimations() {
+            const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .fade-in, .scale-in');
+
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            animatedElements.forEach(el => observer.observe(el));
+        }
+
+        // Initialize scroll animations on page load
+        window.addEventListener('load', initScrollAnimations);
     </script>
 </body>
 </html>
