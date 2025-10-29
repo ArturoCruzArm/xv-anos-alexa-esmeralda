@@ -1003,6 +1003,7 @@
             <p>Producciones Foro 7</p>
             <p>Fotografía, Video, Dron e Invitaciones Web</p>
             <p><i class="fas fa-phone-alt"></i> Contacto: 477-920-3776</p>
+            <p><a href="contrato.html" style="color: var(--gold);">Ver Contrato</a></p>
             <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">
                 © 2025 - Alexa Esmeralda XV Años
             </p>
@@ -1167,6 +1168,31 @@
 
         // Initialize scroll animations on page load
         window.addEventListener('load', initScrollAnimations);
+
+        // Disable right-click on images to prevent easy downloads
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable dragging of images
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable common keyboard shortcuts for saving images
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+S or Cmd+S
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                return false;
+            }
+        });
     </script>
 </body>
 </html>

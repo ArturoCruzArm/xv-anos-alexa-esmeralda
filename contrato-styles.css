@@ -1,0 +1,223 @@
+:root {
+    --emerald: #064420;
+    --emerald-light: #0a6b35;
+    --emerald-dark: #032210;
+    --gold: #d4af37;
+    --gold-light: #f4d03f;
+    --gold-dark: #b8941f;
+    --cream: #faf8f3;
+    --white: #ffffff;
+    --font-main: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: var(--font-main);
+    background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald) 50%, var(--emerald-light) 100%);
+    color: var(--cream);
+    line-height: 1.8;
+    font-size: 16px;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 30px 40px;
+    border: 1px solid var(--gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.contract-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--gold);
+    margin-bottom: 30px;
+}
+
+.contract-header h1 {
+    font-size: 2.5rem;
+    color: var(--gold-light);
+    margin: 0;
+    font-weight: 700;
+}
+
+.contract-header h2 {
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin: 10px 0 0;
+    font-weight: 400;
+}
+
+.contract-section {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.contract-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.contract-section h3 {
+    font-size: 1.6rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.party-info, .family-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.party p, .event-info p, .family-group p, .payment-item p {
+    margin: 5px 0;
+}
+
+p strong {
+    color: var(--gold-light);
+    font-weight: 600;
+}
+
+.highlight {
+    background: rgba(212, 175, 55, 0.1);
+    padding: 25px;
+    border-radius: 10px;
+    margin: -25px;
+    margin-bottom: 35px;
+}
+
+.package-list {
+    list-style: none;
+    padding: 0;
+}
+
+.package-list li {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.terms ol {
+    padding-left: 25px;
+}
+
+.terms li {
+    margin-bottom: 15px;
+}
+
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+.payment-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.payment-table .amount {
+    text-align: right;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.payment-table .total-row td {
+    font-size: 1.3rem;
+    color: var(--gold-light);
+    border-top: 2px solid var(--gold);
+    border-bottom: none;
+}
+
+.payment-schedule {
+    margin-top: 20px;
+}
+
+.payment-item {
+    margin-bottom: 15px;
+}
+
+.payment-status {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.payment-status.paid {
+    color: #4CAF50;
+}
+
+.cancellation-policy ul {
+    padding-left: 20px;
+}
+
+.signatures {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.signature-date {
+    margin-bottom: 40px;
+    font-style: italic;
+    color: var(--gold);
+}
+
+.signature-boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.signature-line {
+    border-bottom: 1px solid var(--cream);
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.back-button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--gold);
+    color: var(--emerald-dark);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: var(--gold-light);
+}
+
+.contract-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    font-size: 0.9rem;
+    color: var(--gold);
+}
+
+@media (max-width: 768px) {
+    .party-info, .family-info, .signature-boxes {
+        grid-template-columns: 1fr;
+    }
+    .container {
+        padding: 20px;
+    }
+    .highlight {
+        margin: -20px;
+        margin-bottom: 35px;
+    }
+}

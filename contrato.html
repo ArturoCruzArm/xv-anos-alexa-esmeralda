@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Contrato de servicios de fotografía y video para los XV años de Sofia Marlén Hernández López">
+    <meta name="author" content="Juan Arturo Cruz">
+    <title>Contrato de Servicios - XV Años Sofia</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="contrato-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="contract-header">
+            <h1>CONTRATO DE SERVICIOS</h1>
+            <h2>Fotografía y Video para XV Años</h2>
+        </header>
+
+        <div class="contract-content">
+            <!-- Partes del Contrato -->
+            <section class="contract-section">
+                <h3>DATOS DE LAS PARTES</h3>
+                <div class="party-info">
+                    <div class="party">
+                        <h4>PRESTADOR DE SERVICIOS</h4>
+                        <p><strong>Nombre:</strong> Juan Arturo Cruz</p>
+                        <p><strong>Empresa:</strong> Producciones Foro 7</p>
+                        <p><strong>Teléfono:</strong> 477-920-3776</p>
+                    </div>
+                    <div class="party">
+                        <h4>CONTRATANTE</h4>
+                        <p><strong>Nombre:</strong> Rosa María López</p>
+                        <p><strong>Teléfono:</strong> 4771794359</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detalles del Evento -->
+            <section class="contract-section">
+                <h3>DETALLES DEL EVENTO</h3>
+                <div class="event-info">
+                    <p><strong>Tipo de Evento:</strong> XV Años</p>
+                    <p><strong>Quinceañera:</strong> Sofia Marlén Hernández López</p>
+                    <p><strong>Fecha del Evento:</strong> 19 de Julio de 2025</p>
+                    <p><strong>Misa:</strong> 5:00 PM en La cruz Blanca</p>
+                    <p><strong>Recepción:</strong> 6:30 PM a 1:00 AM en Salón real del Carmen</p>
+                </div>
+            </section>
+
+            <!-- Paquete Contratado -->
+            <section class="contract-section highlight">
+                <h3>PAQUETE CONTRATADO</h3>
+                <div class="package-info">
+                    <h4>PAQUETE DE FOTOGRAFÍA Y VIDEO A SÓLO $5,000</h4>
+                    <ul class="package-list">
+                        <li>✅ 80 Fotos Del Evento Impresas En Tamaño 5X7 Pulgadas</li>
+                        <li>✅ 1 Películas USB EN 4k con duración de 2:00 hrs c/u original y copia</li>
+                        <li>✅ 1 Caja impresa para la usb</li>
+                        <li>✅ 1 Foto Ampliada A Tamaño 16X20 Pulgadas</li>
+                        <li>✅ 1 Caja impresa para Las Fotografías</li>
+                        <li>✅ 1 Sesion Fotográficas Antes Del Evento O El Día Del Evento</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Costos y Pagos -->
+            <section class="contract-section highlight">
+                <h3>COSTOS Y FORMA DE PAGO</h3>
+                <div class="payment-info">
+                    <table class="payment-table">
+                        <tr class="total-row">
+                            <td><strong>TOTAL:</strong></td>
+                            <td class="amount"><strong>$5,000.00</strong></td>
+                        </tr>
+                    </table>
+
+                    <div class="payment-schedule">
+                        <h4>Calendario de Pagos</h4>
+                        <div class="payment-item">
+                            <p><strong>Anticipo:</strong> $1,000.00</p>
+                            <p class="payment-status paid">✓ PAGADO</p>
+                        </div>
+                        <div class="payment-item">
+                            <p><strong>Saldo Restante:</strong> $4,000.00</p>
+                            <p class="payment-status">A pagar el día del evento</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Firmas -->
+            <section class="signatures">
+                <h3>ACEPTACIÓN DEL CONTRATO</h3>
+                <p class="signature-date">Fecha de emisión: {{ Fecha Actual }}</p>
+                <div class="signature-boxes">
+                    <div class="signature-box">
+                        <div class="signature-line"></div>
+                        <p><strong>Juan Arturo Cruz</strong></p>
+                        <p>Prestador de Servicios</p>p>
+                        <strong>Recibe</strong>
+                    </div>
+                    <div class="signature-box">
+                        <div class="signature-line"></div>
+                        <p><strong>Rosa María López</strong></p>
+                        <p>Contratante</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="back-button-container">
+            <a href="index.html" class="back-button">← Volver a la Invitación</a>
+        </div>
+
+        <footer class="contract-footer">
+            <p>Este contrato representa el acuerdo completo entre las partes</p>
+        </footer>
+    </div>
+
+    <script>
+        // Insert current date
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateElements = document.querySelectorAll('.signature-date');
+            const today = new Date();
+            const formattedDate = today.toLocaleDateString('es-MX', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            dateElements.forEach(el => {
+                el.textContent = `Fecha de emisión: ${formattedDate}`;
+            });
+        });
+    </script>
+</body>
+</html>

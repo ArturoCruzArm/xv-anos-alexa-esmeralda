@@ -828,5 +828,31 @@
     </footer>
 
     <script src="js/selector.js"></script>
+    <script>
+        // Disable right-click on images to prevent easy downloads
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable dragging of images
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable common keyboard shortcuts for saving images
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+S or Cmd+S
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
 </body>
 </html>
