@@ -774,7 +774,7 @@
         <header>
             <div class="crown"><i class="fas fa-crown"></i></div>
             <h1 class="main-title">MIS XV AÑOS</h1>
-            <h2 class="quinceañera-name">Alexa Esmeralda</h2>
+            <h2 class="quinceañera-name">Alexa Esmeralda Salas López</h2>
             <div class="divider"></div>
         </header>
 
@@ -815,16 +815,16 @@
                     <div class="family-icon"><i class="fas fa-home"></i></div>
                     <div class="family-role">Mis Padres</div>
                     <div class="family-names">
-                        Gilberto Delgado Ramos<br>
-                        Esmeralda Silva Murillo
+                        Roberto Carlos Salas Guardado<br>
+                        Ana Lucía López Hernández
                     </div>
                 </div>
                 <div class="family-card">
                     <div class="family-icon"><i class="fas fa-heart"></i></div>
                     <div class="family-role">Mis Padrinos</div>
                     <div class="family-names">
-                        Roberto Carlos Silva Ramírez<br>
-                        Ma. Guadalupe Murillo Barrón
+                        Jaime López Hernández<br>
+                        María Mercedes Hernández Espinoza
                     </div>
                 </div>
             </div>
@@ -841,11 +841,11 @@
                     </div>
                     <div class="event-info">
                         <strong><i class="fas fa-clock"></i> Hora</strong>
-                        18:00 hrs
+                        17:00 hrs
                     </div>
                     <div class="event-info">
                         <strong><i class="fas fa-map-marker-alt"></i> Lugar</strong>
-                        Parroquia María Madre de la Iglesia<br>
+                        Parroquia María Madre<br>
                         Blvd. Juan Alonso de Torres Pte. 2002<br>
                         León, Guanajuato
                     </div>
@@ -865,12 +865,11 @@
                     </div>
                     <div class="event-info">
                         <strong><i class="fas fa-clock"></i> Hora</strong>
-                        20:00 hrs
+                        18:30 hrs
                     </div>
                     <div class="event-info">
                         <strong><i class="fas fa-map-marker-alt"></i> Lugar</strong>
-                        Quinta El Ranchito<br>
-                        Camino a Comanjilla SN<br>
+                        Salón Quinta El Ranchito Talabarteros<br>
                         León, Guanajuato
                     </div>
                     <div style="margin-top: 20px;">
@@ -1042,7 +1041,7 @@
     <script>
         // Countdown Timer
         function updateCountdown() {
-            const eventDate = new Date('2025-11-15T18:00:00').getTime();
+            const eventDate = new Date('2025-11-15T17:00:00').getTime();
             const now = new Date().getTime();
             const distance = eventDate - now;
 
@@ -1071,8 +1070,8 @@
             const location = type === 'ceremony'
                 ? 'Parroquia María Madre de la Iglesia, León, Guanajuato'
                 : 'Quinta El Ranchito, León, Guanajuato';
-            const startTime = type === 'ceremony' ? '20251115T180000' : '20251115T200000';
-            const endTime = type === 'ceremony' ? '20251115T190000' : '20251116T020000';
+            const startTime = type === 'ceremony' ? '20251115T170000' : '20251115T183000';
+            const endTime = type === 'ceremony' ? '20251115T180000' : '20251116T020000';
 
             const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startTime}/${endTime}&details=${encodeURIComponent('XV Años de Alexa Esmeralda')}&location=${encodeURIComponent(location)}`;
 
