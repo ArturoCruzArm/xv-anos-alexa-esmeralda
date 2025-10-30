@@ -1121,34 +1121,6 @@
             </div>
         </section>
 
-        <!-- Gift Registry -->
-        <section class="gift-registry">
-            <h2 class="section-title"><i class="fas fa-gift"></i> Mesa de Regalos</h2>
-            <p style="margin-bottom: 30px; color: var(--cream); font-size: 1.1rem;">
-                Tu presencia es el mejor regalo, pero si deseas obsequiarme algo, aquí te dejo algunas opciones
-            </p>
-            <div class="gift-options">
-                <div class="gift-option">
-                    <div class="gift-icon"><i class="fas fa-store"></i></div>
-                    <a href="#" class="btn">Liverpool</a>
-                </div>
-                <div class="gift-option">
-                    <div class="gift-icon"><i class="fab fa-amazon"></i></div>
-                    <a href="#" class="btn">Amazon</a>
-                </div>
-                <div class="gift-option">
-                    <div class="gift-icon"><i class="fas fa-money-bill-wave"></i></div>
-                    <button onclick="showTransferInfo()" class="btn">Transferencia</button>
-                </div>
-            </div>
-            <div id="transferInfo" style="display: none; margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px;">
-                <p style="color: var(--gold); font-size: 1.2rem; margin-bottom: 15px;"><i class="fas fa-credit-card"></i> Información de Transferencia</p>
-                <p style="color: var(--cream);">Banco: [Nombre del banco]</p>
-                <p style="color: var(--cream);">Cuenta: [Número de cuenta]</p>
-                <p style="color: var(--cream);">CLABE: [CLABE interbancaria]</p>
-            </div>
-        </section>
-
         <!-- Social Share -->
         <section class="social-share">
             <h2 class="section-title"><i class="fas fa-share-alt"></i> Comparte</h2>
@@ -1298,33 +1270,34 @@
             });
         }
 
-        // Show Transfer Info
-        function showTransferInfo() {
-            const info = document.getElementById('transferInfo');
-            info.style.display = info.style.display === 'none' ? 'block' : 'none';
-        }
-
         // Slideshow variables
         let currentSlideIndex = 0;
-        let allPhotos = [];
-        const TOTAL_PHOTOS = 368; // Total number of photos in the gallery
+        let allPhotos = [
+            'images/inv/foto0004.webp',
+            'images/inv/foto0009.webp',
+            'images/inv/foto0012.webp',
+            'images/inv/foto0020.webp',
+            'images/inv/foto0038.webp',
+            'images/inv/foto0058.webp',
+            'images/inv/foto0063.webp',
+            'images/inv/foto0068.webp',
+            'images/inv/foto0073.webp',
+            'images/inv/foto0075.webp',
+            'images/inv/foto0077.webp',
+            'images/inv/foto0085.webp'
+        ];
 
         // Load Gallery Preview
         function loadGalleryPreview() {
             const gallery = document.getElementById('galleryPreview');
-            const previewPhotos = [1, 2, 3, 4, 5, 6];
 
-            // Initialize all photos array
-            for (let i = 1; i <= TOTAL_PHOTOS; i++) {
-                allPhotos.push(`images/foto${String(i).padStart(4, '0')}.webp`);
-            }
-
-            previewPhotos.forEach(num => {
+            // Show first 6 photos as preview
+            allPhotos.slice(0, 6).forEach((photoPath, index) => {
                 const img = document.createElement('img');
-                img.src = `images/foto${String(num).padStart(4, '0')}.webp`;
-                img.alt = `Foto ${num}`;
+                img.src = photoPath;
+                img.alt = `Foto ${index + 1}`;
                 img.loading = 'lazy';
-                img.onclick = () => openSlideshow(num - 1);
+                img.onclick = () => openSlideshow(index);
                 gallery.appendChild(img);
             });
         }
