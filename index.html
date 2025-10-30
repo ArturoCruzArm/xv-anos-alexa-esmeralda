@@ -749,6 +749,136 @@
         #play-pause-btn:hover {
             transform: scale(1.1);
         }
+
+        /* Slideshow Modal */
+        .slideshow-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .slideshow-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slideshow-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slideshow-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.5);
+        }
+
+        .slideshow-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: var(--gold);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slideshow-close:hover {
+            color: var(--gold-light);
+            transform: rotate(90deg);
+        }
+
+        .slideshow-prev,
+        .slideshow-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            user-select: none;
+            z-index: 10000;
+        }
+
+        .slideshow-prev:hover,
+        .slideshow-next:hover {
+            background: rgba(212, 175, 55, 0.3);
+            color: var(--gold-light);
+        }
+
+        .slideshow-prev {
+            left: 20px;
+        }
+
+        .slideshow-next {
+            right: 20px;
+        }
+
+        .slideshow-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            font-size: 18px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 20px;
+            z-index: 10000;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .slideshow-prev,
+            .slideshow-next {
+                font-size: 25px;
+                padding: 10px 15px;
+            }
+
+            .slideshow-close {
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
+                top: 10px;
+                right: 10px;
+            }
+
+            .slideshow-counter {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -783,6 +913,23 @@
             "Hoy comienza un nuevo capítulo lleno de sueños, ilusiones y magia. <br>
             Gracias por acompañarme en este día tan especial."
         </div>
+
+        <!-- Video Section -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-video"></i> Mi Historia</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="position: relative; padding-bottom: 177.78%; height: 0; overflow: hidden; border-radius: 15px; border: 3px solid var(--gold);">
+                    <iframe
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                        src="https://www.youtube.com/embed/f2MhRgukup0?autoplay=1&mute=1&loop=1&playlist=f2MhRgukup0&controls=1&modestbranding=1&rel=0"
+                        title="Video XV Años"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
 
         <!-- Countdown -->
         <section>
@@ -837,7 +984,10 @@
                 <!-- Ceremony -->
                 <div class="event-card">
                     <span class="event-icon"><i class="fas fa-church"></i></span>
-                    <h3 class="event-title">Sábado, 15 de noviembre de 2025
+                    <h3 class="event-title">Ceremonia</h3>
+                    <div class="event-info">
+                        <strong><i class="fas fa-calendar-alt"></i> Fecha</strong>
+                        Sábado, 15 de noviembre de 2025
                     </div>
                     <div class="event-info">
                         <strong><i class="fas fa-clock"></i> Hora</strong>
@@ -964,11 +1114,8 @@
         <section>
             <h2 class="section-title"><i class="fas fa-camera"></i> Galería de Fotos</h2>
             <p style="text-align: center; margin-bottom: 30px; color: var(--cream);">
-                Ayúdame a seleccionar las mejores fotos para imprimir y compartir
+                Haz clic en cualquier foto para ver la galería completa
             </p>
-            <div style="text-align: center; margin-bottom: 30px;">
-                <a href="selector.html" class="btn"><i class="fas fa-images"></i> Ir al Selector de Fotos</a>
-            </div>
             <div class="gallery-preview" id="galleryPreview">
                 <!-- Preview photos will be loaded here -->
             </div>
@@ -1028,6 +1175,17 @@
                 © 2025 - Alexa Esmeralda XV Años
             </p>
         </footer>
+    </div>
+
+    <!-- Slideshow Modal -->
+    <div id="slideshowModal" class="slideshow-modal">
+        <span class="slideshow-close" onclick="closeSlideshow()">&times;</span>
+        <span class="slideshow-prev" onclick="changeSlide(-1)">&#10094;</span>
+        <div class="slideshow-content">
+            <img id="slideshowImage" src="" alt="Foto de galería">
+        </div>
+        <span class="slideshow-next" onclick="changeSlide(1)">&#10095;</span>
+        <div class="slideshow-counter" id="slideshowCounter"></div>
     </div>
 
     <!-- Audio Player -->
@@ -1146,20 +1304,88 @@
             info.style.display = info.style.display === 'none' ? 'block' : 'none';
         }
 
-        // Load Gallery Preview (first 6 photos)
+        // Slideshow variables
+        let currentSlideIndex = 0;
+        let allPhotos = [];
+        const TOTAL_PHOTOS = 368; // Total number of photos in the gallery
+
+        // Load Gallery Preview
         function loadGalleryPreview() {
             const gallery = document.getElementById('galleryPreview');
             const previewPhotos = [1, 2, 3, 4, 5, 6];
+
+            // Initialize all photos array
+            for (let i = 1; i <= TOTAL_PHOTOS; i++) {
+                allPhotos.push(`images/foto${String(i).padStart(4, '0')}.webp`);
+            }
 
             previewPhotos.forEach(num => {
                 const img = document.createElement('img');
                 img.src = `images/foto${String(num).padStart(4, '0')}.webp`;
                 img.alt = `Foto ${num}`;
                 img.loading = 'lazy';
-                img.onclick = () => window.location.href = 'selector.html';
+                img.onclick = () => openSlideshow(num - 1);
                 gallery.appendChild(img);
             });
         }
+
+        // Open slideshow
+        function openSlideshow(index) {
+            currentSlideIndex = index;
+            showSlide(currentSlideIndex);
+            document.getElementById('slideshowModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent body scrolling
+        }
+
+        // Close slideshow
+        function closeSlideshow() {
+            document.getElementById('slideshowModal').classList.remove('active');
+            document.body.style.overflow = ''; // Restore body scrolling
+        }
+
+        // Change slide
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+
+            // Loop around
+            if (currentSlideIndex >= allPhotos.length) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex < 0) {
+                currentSlideIndex = allPhotos.length - 1;
+            }
+
+            showSlide(currentSlideIndex);
+        }
+
+        // Show slide
+        function showSlide(index) {
+            const img = document.getElementById('slideshowImage');
+            const counter = document.getElementById('slideshowCounter');
+
+            img.src = allPhotos[index];
+            counter.textContent = `${index + 1} / ${allPhotos.length}`;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('slideshowModal');
+            if (!modal.classList.contains('active')) return;
+
+            if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeSlide(1);
+            } else if (e.key === 'Escape') {
+                closeSlideshow();
+            }
+        });
+
+        // Close slideshow when clicking outside the image
+        document.getElementById('slideshowModal').addEventListener('click', (e) => {
+            if (e.target.id === 'slideshowModal') {
+                closeSlideshow();
+            }
+        });
 
         // Load gallery on page load
         window.addEventListener('load', loadGalleryPreview);
