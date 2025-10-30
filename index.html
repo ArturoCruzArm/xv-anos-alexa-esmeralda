@@ -1032,7 +1032,7 @@
 
     <!-- Audio Player -->
     <audio id="background-audio" loop>
-        <source src="audio/_Brilla Esmeralda_ (Canción original para Alexa Esmeralda).mp3" type="audio/mpeg">
+        <source src="audio/brilla-esmeralda.mp3" type="audio/mpeg">
     </audio>
     <div id="audio-controls">
         <button id="play-pause-btn"><i class="fas fa-play"></i></button>
@@ -1041,7 +1041,8 @@
     <script>
         // Countdown Timer
         function updateCountdown() {
-            const eventDate = new Date('2025-11-15T17:00:00').getTime();
+            // Fecha del evento: 15 de noviembre de 2025 a las 17:00 hrs
+            const eventDate = new Date(2025, 10, 15, 17, 0, 0).getTime(); // Mes 10 = Noviembre (0-indexed)
             const now = new Date().getTime();
             const distance = eventDate - now;
 
@@ -1113,7 +1114,8 @@
         }
 
         // Social Sharing
-const text = '¡Estás invitado a mis XV años! 👑✨ - Alexa Esmeralda - 15 de noviembre de 2025';
+        function shareWhatsApp() {
+            const text = '¡Estás invitado a mis XV años! 👑✨ - Alexa Esmeralda - 15 de noviembre de 2025';
             const url = window.location.href;
             window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
         }
