@@ -520,8 +520,6 @@ function saveModalSelection(callback) {
 // ========================================
 function exportToJSON() {
     const exportData = {
-        INSTRUCCIONES: '⚠️ IMPORTANTE: Por favor envía este archivo por WhatsApp al 4779203776',
-        whatsapp: '4779203776',
         fecha_exportacion: new Date().toISOString(),
         evento: 'XV Años - Alexa Esmeralda',
         total_fotos: photos.length,
@@ -546,15 +544,22 @@ function exportToJSON() {
         }
     });
 
-    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `seleccion-alexa-xv-${new Date().toISOString().split('T')[0]}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
+    // Convertir el JSON a texto formateado
+    const jsonText = JSON.stringify(exportData, null, 2);
 
-    showToast('Reporte descargado. ¡Envíalo por WhatsApp al 4779203776!', 'success');
+    // Crear mensaje para WhatsApp
+    const message = `👑 SELECCIÓN DE FOTOS - XV AÑOS ALEXA ESMERALDA\n\n${jsonText}`;
+
+    // Codificar el mensaje para URL
+    const encodedMessage = encodeURIComponent(message);
+
+    // Crear URL de WhatsApp
+    const whatsappURL = `https://wa.me/524779203776?text=${encodedMessage}`;
+
+    // Abrir WhatsApp en nueva ventana
+    window.open(whatsappURL, '_blank');
+
+    showToast('Abriendo WhatsApp para enviar reporte...', 'success');
 }
 
 function generateTextSummary() {
