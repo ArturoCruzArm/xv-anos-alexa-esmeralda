@@ -66,6 +66,7 @@ function getStats() {
         ampliacion: 0,
         impresion: 0,
         redes_sociales: 0,
+        invitaciones_web: 0,
         descartada: 0,
         sinClasificar: photos.length
     };
@@ -74,6 +75,7 @@ function getStats() {
         if (selection.ampliacion) stats.ampliacion++;
         if (selection.impresion) stats.impresion++;
         if (selection.redes_sociales) stats.redes_sociales++;
+        if (selection.invitaciones_web) stats.invitaciones_web++;
         if (selection.descartada) stats.descartada++;
     });
 
@@ -89,6 +91,7 @@ function updateStats() {
     document.getElementById('countAmpliacion').textContent = stats.ampliacion;
     document.getElementById('countImpresion').textContent = stats.impresion;
     document.getElementById('countRedesSociales').textContent = stats.redes_sociales;
+    document.getElementById('countInvitacionesWeb').textContent = stats.invitaciones_web;
     document.getElementById('countDescartada').textContent = stats.descartada;
     document.getElementById('countSinClasificar').textContent = stats.sinClasificar;
 
@@ -219,7 +222,7 @@ function renderGallery() {
 
     photos.forEach((photo, index) => {
         const selection = photoSelections[index] || {};
-        const hasAny = selection.ampliacion || selection.impresion || selection.redes_sociales || selection.descartada;
+        const hasAny = selection.ampliacion || selection.impresion || selection.redes_sociales || selection.invitaciones_web || selection.descartada;
 
         const card = document.createElement('div');
         card.className = 'photo-card';
@@ -233,6 +236,7 @@ function renderGallery() {
             if (selection.ampliacion) categories.push('ampliacion');
             if (selection.impresion) categories.push('impresion');
             if (selection.redes_sociales) categories.push('redes_sociales');
+            if (selection.invitaciones_web) categories.push('invitaciones_web');
 
             if (categories.length > 1) {
                 card.classList.add('has-multiple');
@@ -248,6 +252,7 @@ function renderGallery() {
             if (selection.ampliacion) badgesHTML += '<span class="badge badge-ampliacion"><i class="fas fa-image"></i> Ampliación</span>';
             if (selection.impresion) badgesHTML += '<span class="badge badge-impresion"><i class="fas fa-camera"></i> Impresión</span>';
             if (selection.redes_sociales) badgesHTML += '<span class="badge badge-redes-sociales"><i class="fas fa-share-alt"></i> Redes Sociales</span>';
+            if (selection.invitaciones_web) badgesHTML += '<span class="badge badge-invitaciones-web"><i class="fas fa-globe"></i> Invitaciones Web</span>';
             if (selection.descartada) badgesHTML += '<span class="badge badge-descartada"><i class="fas fa-times-circle"></i> Descartada</span>';
             badgesHTML += '</div>';
         }
@@ -287,11 +292,14 @@ function isPhotoVisible(index) {
         case 'redes-sociales':
             show = selection.redes_sociales === true;
             break;
+        case 'invitaciones-web':
+            show = selection.invitaciones_web === true;
+            break;
         case 'descartada':
             show = selection.descartada === true;
             break;
         case 'sin-clasificar':
-            show = !selection.ampliacion && !selection.impresion && !selection.redes_sociales && !selection.descartada;
+            show = !selection.ampliacion && !selection.impresion && !selection.redes_sociales && !selection.invitaciones_web && !selection.descartada;
             break;
     }
     return show;
@@ -329,6 +337,7 @@ function updateFilterButtons() {
     document.getElementById('btnFilterAmpliacion').textContent = `Ampliación (${stats.ampliacion})`;
     document.getElementById('btnFilterImpresion').textContent = `Impresión (${stats.impresion})`;
     document.getElementById('btnFilterRedesSociales').textContent = `Redes Sociales (${stats.redes_sociales})`;
+    document.getElementById('btnFilterInvitacionesWeb').textContent = `Invitaciones Web (${stats.invitaciones_web})`;
     document.getElementById('btnFilterDescartada').textContent = `Descartadas (${stats.descartada})`;
     document.getElementById('btnFilterSinClasificar').textContent = `Sin Clasificar (${stats.sinClasificar})`;
 }
@@ -532,13 +541,14 @@ function exportToJSON() {
 
     photos.forEach((photo, index) => {
         const selection = photoSelections[index];
-        if (selection && (selection.ampliacion || selection.impresion || selection.redes_sociales || selection.descartada)) {
+        if (selection && (selection.ampliacion || selection.impresion || selection.redes_sociales || selection.invitaciones_web || selection.descartada)) {
             exportData.selecciones.push({
                 numero_foto: index + 1,
                 archivo: photo,
                 ampliacion: selection.ampliacion || false,
                 impresion: selection.impresion || false,
                 redes_sociales: selection.redes_sociales || false,
+                invitaciones_web: selection.invitaciones_web || false,
                 descartada: selection.descartada || false
             });
         }
@@ -571,14 +581,16 @@ function generateTextSummary() {
     summary += `   🖼️  Para ampliación: ${stats.ampliacion}\n`;
     summary += `   📸 Para impresión: ${stats.impresion}\n`;
     summary += `   📱 Para redes sociales: ${stats.redes_sociales}\n`;
+    summary += `   🌐 Para invitaciones web: ${stats.invitaciones_web}\n`;
     summary += `   ❌ Descartadas: ${stats.descartada}\n`;
     summary += `   ⭕ Sin clasificar: ${stats.sinClasificar}\n\n`;
 
-    const categories = ['ampliacion', 'impresion', 'redes_sociales', 'descartada'];
+    const categories = ['ampliacion', 'impresion', 'redes_sociales', 'invitaciones_web', 'descartada'];
     const categoryNames = {
         ampliacion: '🖼️  AMPLIACIÓN',
         impresion: '📸 IMPRESIÓN',
         redes_sociales: '📱 REDES SOCIALES',
+        invitaciones_web: '🌐 INVITACIONES WEB',
         descartada: '❌ DESCARTADAS'
     };
 
@@ -673,6 +685,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnFilterAmpliacion').addEventListener('click', () => setFilter('ampliacion'));
     document.getElementById('btnFilterImpresion').addEventListener('click', () => setFilter('impresion'));
     document.getElementById('btnFilterRedesSociales').addEventListener('click', () => setFilter('redes-sociales'));
+    document.getElementById('btnFilterInvitacionesWeb').addEventListener('click', () => setFilter('invitaciones-web'));
     document.getElementById('btnFilterDescartada').addEventListener('click', () => setFilter('descartada'));
     document.getElementById('btnFilterSinClasificar').addEventListener('click', () => setFilter('sin-clasificar'));
 
@@ -681,6 +694,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnFilterAmpliacion').dataset.filter = 'ampliacion';
     document.getElementById('btnFilterImpresion').dataset.filter = 'impresion';
     document.getElementById('btnFilterRedesSociales').dataset.filter = 'redes-sociales';
+    document.getElementById('btnFilterInvitacionesWeb').dataset.filter = 'invitaciones-web';
     document.getElementById('btnFilterDescartada').dataset.filter = 'descartada';
     document.getElementById('btnFilterSinClasificar').dataset.filter = 'sin-clasificar';
 

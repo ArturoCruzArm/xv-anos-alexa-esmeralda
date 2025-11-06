@@ -236,6 +236,10 @@
             background: #4caf50;
         }
 
+        .badge.invitaciones_web {
+            background: #ff9800;
+        }
+
         .badge.descartada {
             background: #f44336;
         }
@@ -701,6 +705,13 @@
                             <p class="stat-count" id="countRedesSociales">0</p>
                         </div>
                     </div>
+                    <div class="stat-card invitaciones-web">
+                        <div class="stat-icon"><i class="fas fa-globe"></i></div>
+                        <div class="stat-info">
+                            <h3>Invitaciones Web</h3>
+                            <p class="stat-count" id="countInvitacionesWeb">0</p>
+                        </div>
+                    </div>
                     <div class="stat-card descartada">
                         <div class="stat-icon"><i class="fas fa-times-circle"></i></div>
                         <div class="stat-info">
@@ -722,6 +733,7 @@
                     <button class="btn btn-filter" id="btnFilterAmpliacion">Ampliación (0)</button>
                     <button class="btn btn-filter" id="btnFilterImpresion">Impresión (0)</button>
                     <button class="btn btn-filter" id="btnFilterRedesSociales">Redes Sociales (0)</button>
+                    <button class="btn btn-filter" id="btnFilterInvitacionesWeb">Invitaciones Web (0)</button>
                     <button class="btn btn-filter" id="btnFilterDescartada">Descartadas (0)</button>
                     <button class="btn btn-filter" id="btnFilterSinClasificar">Sin Clasificar (86)</button>
                 </div>
@@ -772,6 +784,11 @@
                         <button class="option-btn" data-category="redes_sociales">
                             <span class="option-icon"><i class="fas fa-share-alt"></i></span>
                             <span class="option-text">Redes Sociales</span>
+                            <span class="option-check"><i class="fas fa-check"></i></span>
+                        </button>
+                        <button class="option-btn" data-category="invitaciones_web">
+                            <span class="option-icon"><i class="fas fa-globe"></i></span>
+                            <span class="option-text">Invitaciones Web</span>
                             <span class="option-check"><i class="fas fa-check"></i></span>
                         </button>
                         <button class="option-btn" data-category="descartada">
