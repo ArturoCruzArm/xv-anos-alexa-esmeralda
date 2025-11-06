@@ -914,3 +914,98 @@ function initScrollAnimations() {
 
 // Initialize scroll animations on page load
 window.addEventListener('load', initScrollAnimations);
+
+// ========================================
+// FEATURED IMPROVEMENT ACTIONS
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Accept Changes Button
+    const btnAcceptChanges = document.getElementById('btnAcceptChanges');
+    if (btnAcceptChanges) {
+        btnAcceptChanges.addEventListener('click', () => {
+            if (confirm('¿Confirmas que deseas conservar estas mejoras en la Foto #49?\n\nLa foto mejorada será marcada automáticamente para AMPLIACIÓN.')) {
+                // Mark photo 49 (index 48) for ampliacion
+                const photoIndex = 48; // foto0049 es índice 48 (0-based)
+
+                photoSelections[photoIndex] = {
+                    ampliacion: true,
+                    impresion: false,
+                    redes_sociales: false,
+                    invitaciones_web: false,
+                    descartada: false
+                };
+
+                saveSelections();
+                renderGallery();
+                updateStats();
+                updateFilterButtons();
+
+                showToast('✅ Cambios conservados. Foto #49 marcada para AMPLIACIÓN', 'success');
+
+                // Scroll to gallery
+                setTimeout(() => {
+                    document.querySelector('.photos-grid').scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+            }
+        });
+    }
+
+    // Suggest More Changes Button
+    const btnSuggestMoreChanges = document.getElementById('btnSuggestMoreChanges');
+    if (btnSuggestMoreChanges) {
+        btnSuggestMoreChanges.addEventListener('click', () => {
+            const changes = prompt('¿Qué cambios adicionales te gustaría que se realicen en la Foto #49?\n\nDescribe las mejoras que necesitas:');
+
+            if (changes && changes.trim() !== '') {
+                // Add to feedback
+                feedbackData.photos.push({
+                    photoNumber: 49,
+                    change: `[MEJORA ADICIONAL] ${changes.trim()}`
+                });
+
+                saveFeedback();
+                renderFeedbackLists();
+
+                showToast('✅ Sugerencia de cambios adicionales agregada para Foto #49', 'success');
+
+                // Show confirmation
+                alert('📝 Tu sugerencia ha sido registrada:\n\n"' + changes.trim() + '"\n\nSe enviará junto con el reporte al fotógrafo para aplicar los cambios adicionales.');
+            }
+        });
+    }
+
+    // Undo Changes Button
+    const btnUndoChanges = document.getElementById('btnUndoChanges');
+    if (btnUndoChanges) {
+        btnUndoChanges.addEventListener('click', () => {
+            if (confirm('¿Estás segura de que quieres DESHACER las mejoras aplicadas?\n\nSe volverá a usar la foto ORIGINAL sin editar.')) {
+                // Add feedback to use original
+                feedbackData.photos.push({
+                    photoNumber: 49,
+                    change: '[USAR ORIGINAL] Prefiero la foto original sin las mejoras aplicadas'
+                });
+
+                // Mark as descartada the improved version
+                const photoIndex = 48;
+                photoSelections[photoIndex] = {
+                    ampliacion: false,
+                    impresion: false,
+                    redes_sociales: false,
+                    invitaciones_web: false,
+                    descartada: true
+                };
+
+                saveFeedback();
+                saveSelections();
+                renderFeedbackLists();
+                renderGallery();
+                updateStats();
+                updateFilterButtons();
+
+                showToast('↩️ Cambios deshachos. Se usará la foto ORIGINAL', 'success');
+
+                alert('✅ Las mejoras han sido descartadas.\n\nSe usará la foto ORIGINAL sin editar para la ampliación.\n\nEsta preferencia se enviará al fotógrafo en el reporte.');
+            }
+        });
+    }
+});

@@ -637,6 +637,187 @@
                 width: 150px;
             }
         }
+
+        /* Featured Improvement Section */
+        .featured-improvement {
+            background: linear-gradient(135deg, #064420 0%, #0a6b35 100%);
+            padding: 40px 20px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .improvement-title {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .improvement-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .improvement-photo {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .improvement-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        .photo-label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--gold);
+            color: var(--emerald-dark);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
+        }
+
+        .improvement-details {
+            padding: 10px;
+        }
+
+        .improvement-details h3 {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+        }
+
+        .improvement-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .improvement-section h4 {
+            color: var(--gold-light);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .improvement-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .improvement-section li {
+            padding: 6px 0 6px 25px;
+            position: relative;
+            color: var(--cream);
+            line-height: 1.6;
+        }
+
+        .improvement-section li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .improvement-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .improvement-actions .btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-accept {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+        }
+
+        .btn-accept:hover {
+            background: linear-gradient(135deg, #229954 0%, #1e8449 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(39, 174, 96, 0.4);
+        }
+
+        .btn-suggest {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+
+        .btn-suggest:hover {
+            background: linear-gradient(135deg, #2980b9 0%, #21618c 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-undo {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+        }
+
+        .btn-undo:hover {
+            background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Responsive for Featured Improvement */
+        @media (max-width: 968px) {
+            .improvement-card {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .improvement-title {
+                font-size: 2rem;
+            }
+
+            .improvement-actions {
+                flex-direction: column;
+            }
+
+            .improvement-actions .btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -678,6 +859,64 @@
                 </div>
             </div>
         </section>
+
+        <!-- Foto Mejorada Destacada -->
+        <section class="featured-improvement">
+            <div class="container">
+                <h2 class="improvement-title">
+                    <i class="fas fa-magic"></i> Foto Mejorada Lista para Ampliación
+                </h2>
+                <div class="improvement-card">
+                    <div class="improvement-photo">
+                        <img src="images/mejoras/foto0049-mejorada.jpg" alt="Foto 49 Mejorada">
+                        <span class="photo-label">Foto #49</span>
+                    </div>
+                    <div class="improvement-details">
+                        <h3><i class="fas fa-sparkles"></i> Mejoras Aplicadas</h3>
+
+                        <div class="improvement-section">
+                            <h4><i class="fas fa-sun"></i> Corrección de Iluminación</h4>
+                            <ul>
+                                <li>Se incrementó la iluminación principal en el rostro y parte superior del cuerpo</li>
+                                <li>Se aplicó iluminación direccional suave simulando luz de flash difuso</li>
+                                <li>Se mantuvo el ambiente nocturno con tonos más cálidos en la catedral</li>
+                            </ul>
+                        </div>
+
+                        <div class="improvement-section">
+                            <h4><i class="fas fa-palette"></i> Ajuste de Color y Tono</h4>
+                            <ul>
+                                <li>Se corrigió el balance de blancos para dar un tono más natural a la piel</li>
+                                <li>Se realzó el verde esmeralda del vestido, haciéndolo más vibrante</li>
+                                <li>Los vidrios de la catedral se saturaron ligeramente</li>
+                            </ul>
+                        </div>
+
+                        <div class="improvement-section">
+                            <h4><i class="fas fa-eye"></i> Enfoque y Nitidez</h4>
+                            <ul>
+                                <li>Se aplicó enfoque de alta frecuencia en rostro, cabello y detalles del vestido</li>
+                                <li>Se suavizó el fondo con profundidad de campo simulada</li>
+                                <li>Reducción de ruido y grano digital en zonas oscuras</li>
+                            </ul>
+                        </div>
+
+                        <div class="improvement-actions">
+                            <button class="btn btn-accept" id="btnAcceptChanges">
+                                <i class="fas fa-check-circle"></i> Conservar Cambios
+                            </button>
+                            <button class="btn btn-suggest" id="btnSuggestMoreChanges">
+                                <i class="fas fa-edit"></i> Sugerir Más Cambios
+                            </button>
+                            <button class="btn btn-undo" id="btnUndoChanges">
+                                <i class="fas fa-undo"></i> Deshacer Cambios
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Control Panel -->
         <section class="control-panel">
             <div class="container">
