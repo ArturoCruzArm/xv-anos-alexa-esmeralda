@@ -535,7 +535,12 @@ function exportToJSON() {
         estadisticas: getStats(),
         selecciones: [],
         sugerencias_de_cambios: {
-            fotos: feedbackData.photos.length > 0 ? feedbackData.photos : 'Sin cambios sugeridos'
+            fotos: feedbackData.photos.length > 0 ? feedbackData.photos : 'Sin cambios sugeridos',
+            video: (typeof videoFeedback !== 'undefined' && videoFeedback.length > 0) ?
+                videoFeedback.sort((a, b) => a.totalSeconds - b.totalSeconds).map(item => ({
+                    timestamp: item.timestamp,
+                    cambio: item.change
+                })) : 'Sin cambios sugeridos'
         }
     };
 

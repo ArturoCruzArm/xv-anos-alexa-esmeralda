@@ -879,6 +879,26 @@
             </div>
         </section>
 
+        <!-- Video Section 3: Video de la Fiesta -->
+        <section class="video-section" style="background: rgb(0, 59, 5); padding: 40px 20px; margin: 30px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <div class="container">
+                <h2 style="font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 30px; color: #ffbb00f3; font-size: clamp(1.5rem, 4vw, 2.5rem);">
+                    🎉 Video de la Fiesta
+                </h2>
+                <div style="max-width: 900px; margin: 0 auto; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                    <iframe
+                        id="partyVideoPlayer"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                        src="https://www.youtube.com/embed/_hoiArXF1k8?enablejsapi=1"
+                        title="Video de la Fiesta"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
         <!-- Foto Mejorada Destacada -->
         <section class="featured-improvement">
             <div class="container">
@@ -1009,6 +1029,69 @@
         <section class="gallery-section">
             <div class="container">
                 <div class="photos-grid" id="photosGrid"></div>
+            </div>
+        </section>
+
+        <!-- Video Suggestions Section -->
+        <section class="video-feedback-section" style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 40px 30px; margin: 30px 0; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.2);">
+            <h2 style="font-family: 'Playfair Display', serif; color: var(--gold); text-align: center; font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 20px;"><i class="fas fa-video"></i> Sugerencias para el Video de la Fiesta</h2>
+            <p style="text-align: center; color: var(--cream); margin-bottom: 30px;">
+                Si deseas sugerir algún cambio o edición en el video, agrégalo aquí con el minuto y segundo específico
+            </p>
+
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div id="videoFeedbackList" style="margin-bottom: 25px;"></div>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start;">
+                    <div style="display: flex; gap: 5px; flex: 0 0 auto;">
+                        <input
+                            type="number"
+                            id="videoMinute"
+                            placeholder="Min"
+                            min="0"
+                            style="width: 70px; padding: 12px; border: 2px solid var(--gold); border-radius: 10px; background: rgba(255, 255, 255, 0.1); color: var(--cream); font-size: 1rem;"
+                        >
+                        <span style="padding: 12px 5px; color: var(--gold); font-size: 1.2rem; font-weight: bold;">:</span>
+                        <input
+                            type="number"
+                            id="videoSecond"
+                            placeholder="Seg"
+                            min="0"
+                            max="59"
+                            style="width: 70px; padding: 12px; border: 2px solid var(--gold); border-radius: 10px; background: rgba(255, 255, 255, 0.1); color: var(--cream); font-size: 1rem;"
+                        >
+                    </div>
+                    <input
+                        type="text"
+                        id="videoChange"
+                        placeholder="Describe el cambio sugerido para este momento del video..."
+                        style="flex: 1; min-width: 200px; padding: 12px; border: 2px solid var(--gold); border-radius: 10px; background: rgba(255, 255, 255, 0.1); color: var(--cream); font-size: 1rem;"
+                    >
+                    <button
+                        onclick="addVideoFeedback()"
+                        style="padding: 12px 25px; background: var(--gold); color: var(--emerald-dark); border: none; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 1rem; transition: all 0.3s ease;"
+                        onmouseover="this.style.background='var(--gold-light)'"
+                        onmouseout="this.style.background='var(--gold)'"
+                    >
+                        <i class="fas fa-plus"></i> Agregar
+                    </button>
+                    <button
+                        onclick="jumpToTimestamp()"
+                        style="padding: 12px 25px; background: var(--emerald-light); color: var(--cream); border: none; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 1rem; transition: all 0.3s ease;"
+                        onmouseover="this.style.background='var(--emerald)'"
+                        onmouseout="this.style.background='var(--emerald-light)'"
+                    >
+                        <i class="fas fa-play"></i> Ver
+                    </button>
+                </div>
+
+                <div style="margin-top: 30px; padding: 20px; background: rgba(33, 150, 243, 0.1); border-left: 4px solid #2196f3; border-radius: 8px;">
+                    <p style="margin: 0; color: var(--cream); font-size: 0.95rem;">
+                        <strong style="color: var(--gold);"><i class="fas fa-info-circle"></i> Ayuda:</strong>
+                        Ingresa el minuto y segundo donde quieres sugerir el cambio.
+                        Por ejemplo: <strong style="color: var(--gold);">3:25</strong> para el minuto 3 con 25 segundos.
+                        Presiona <strong style="color: var(--gold);">"Ver"</strong> para ir directamente a ese momento en el video.
+                    </p>
+                </div>
             </div>
         </section>
     </div>
@@ -1144,6 +1227,135 @@
                 e.preventDefault();
                 return false;
             }
+        });
+
+        // Video feedback functionality
+        let videoFeedback = [];
+
+        function addVideoFeedback() {
+            const minute = document.getElementById('videoMinute').value;
+            const second = document.getElementById('videoSecond').value;
+            const change = document.getElementById('videoChange').value.trim();
+
+            if (!minute && minute !== '0') {
+                alert('Por favor ingresa el minuto');
+                return;
+            }
+
+            if (!second && second !== '0') {
+                alert('Por favor ingresa el segundo');
+                return;
+            }
+
+            if (!change) {
+                alert('Por favor describe el cambio sugerido');
+                return;
+            }
+
+            const timestamp = `${minute}:${String(second).padStart(2, '0')}`;
+            const totalSeconds = parseInt(minute) * 60 + parseInt(second);
+
+            videoFeedback.push({
+                timestamp: timestamp,
+                totalSeconds: totalSeconds,
+                change: change
+            });
+
+            renderVideoFeedback();
+
+            // Clear inputs
+            document.getElementById('videoMinute').value = '';
+            document.getElementById('videoSecond').value = '';
+            document.getElementById('videoChange').value = '';
+        }
+
+        function renderVideoFeedback() {
+            const list = document.getElementById('videoFeedbackList');
+
+            if (videoFeedback.length === 0) {
+                list.innerHTML = '';
+                return;
+            }
+
+            // Sort by timestamp
+            const sorted = [...videoFeedback].sort((a, b) => a.totalSeconds - b.totalSeconds);
+
+            list.innerHTML = sorted.map((item, index) => `
+                <div style="background: rgba(255, 255, 255, 0.08); padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 4px solid var(--gold);">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div style="flex: 1;">
+                            <strong style="color: var(--gold); font-size: 1.1rem;">
+                                <i class="fas fa-clock"></i> ${item.timestamp}
+                            </strong>
+                            <p style="margin: 5px 0 0 0; color: var(--cream);">${item.change}</p>
+                        </div>
+                        <div style="display: flex; gap: 5px;">
+                            <button
+                                onclick="jumpToTimestamp('${item.timestamp}')"
+                                style="padding: 8px 12px; background: var(--emerald-light); color: var(--cream); border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem;"
+                                title="Ir a este momento">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button
+                                onclick="removeVideoFeedback(${index})"
+                                style="padding: 8px 12px; background: #e74c3c; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem;"
+                                title="Eliminar">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function removeVideoFeedback(index) {
+            const sorted = [...videoFeedback].sort((a, b) => a.totalSeconds - b.totalSeconds);
+            const itemToRemove = sorted[index];
+            const originalIndex = videoFeedback.findIndex(item =>
+                item.totalSeconds === itemToRemove.totalSeconds &&
+                item.change === itemToRemove.change
+            );
+            videoFeedback.splice(originalIndex, 1);
+            renderVideoFeedback();
+        }
+
+        function jumpToTimestamp(timestamp = null) {
+            let minute, second;
+
+            if (timestamp) {
+                [minute, second] = timestamp.split(':').map(Number);
+            } else {
+                minute = parseInt(document.getElementById('videoMinute').value) || 0;
+                second = parseInt(document.getElementById('videoSecond').value) || 0;
+            }
+
+            const totalSeconds = minute * 60 + second;
+            const iframe = document.getElementById('partyVideoPlayer');
+
+            // Update iframe src with timestamp
+            const videoId = '_hoiArXF1k8';
+            iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&start=${totalSeconds}&autoplay=1`;
+
+            // Scroll to video
+            iframe.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Initialize video feedback from localStorage
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('videoFeedback_alexa');
+            if (saved) {
+                try {
+                    videoFeedback = JSON.parse(saved);
+                    renderVideoFeedback();
+                } catch (e) {
+                    console.error('Error loading video feedback:', e);
+                }
+            }
+        });
+
+        // Save video feedback to localStorage
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('videoFeedback_alexa', JSON.stringify(videoFeedback));
         });
     </script>
 </body>
