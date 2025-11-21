@@ -2,13 +2,22 @@
 // SELECTOR DE FOTOS - XV AÑOS ALEXA ESMERALDA
 // ========================================
 
-const TOTAL_PHOTOS = 86;
+const TOTAL_SESION_PHOTOS = 86;
+const TOTAL_FIESTA_PHOTOS = 124;
+const TOTAL_PHOTOS = TOTAL_SESION_PHOTOS + TOTAL_FIESTA_PHOTOS; // 210 fotos en total
 const STORAGE_KEY = 'alexa_xv_photo_selections';
 
-// Generate photo paths (foto0001.webp to foto0086.webp)
+// Generate photo paths
 let photos = [];
-for (let i = 1; i <= TOTAL_PHOTOS; i++) {
+
+// Fotos de la sesión (foto0001.webp to foto0086.webp)
+for (let i = 1; i <= TOTAL_SESION_PHOTOS; i++) {
     photos.push(`images/foto${String(i).padStart(4, '0')}.webp`);
+}
+
+// Fotos de la fiesta (fiesta0001.webp to fiesta0124.webp)
+for (let i = 1; i <= TOTAL_FIESTA_PHOTOS; i++) {
+    photos.push(`images/fiesta/fiesta${String(i).padStart(4, '0')}.webp`);
 }
 
 // LIMITS FOR ALEXA'S XV AÑOS
