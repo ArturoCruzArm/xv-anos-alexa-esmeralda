@@ -926,14 +926,7 @@
             <h2 class="section-title"><i class="fas fa-video"></i> De Niña a Grande</h2>
             <div style="max-width: 800px; margin: 0 auto;">
                 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; border: 3px solid var(--gold);">
-                    <iframe
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                        src="https://www.youtube.com/embed/Cj2tLALHlWA?autoplay=1&mute=1&loop=1&playlist=Cj2tLALHlWA&controls=1&modestbranding=1&rel=0"
-                        title="Video De Niña a Grande"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
+                    <div id="youtube-player-nina" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
                 </div>
             </div>
         </section>
@@ -943,14 +936,7 @@
             <h2 class="section-title"><i class="fas fa-video"></i> Mi Sesión de Fotos</h2>
             <div style="max-width: 800px; margin: 0 auto;">
                 <div style="position: relative; padding-bottom: 177.78%; height: 0; overflow: hidden; border-radius: 15px; border: 3px solid var(--gold);">
-                    <iframe
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                        src="https://www.youtube.com/embed/f2MhRgukup0?autoplay=1&mute=1&loop=1&playlist=f2MhRgukup0&controls=1&modestbranding=1&rel=0"
-                        title="Video Sesión de Fotos"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
+                    <div id="youtube-player-sesion" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
                 </div>
             </div>
         </section>
@@ -960,14 +946,7 @@
             <h2 class="section-title"><i class="fas fa-video"></i> Video de la Fiesta</h2>
             <div style="max-width: 800px; margin: 0 auto;">
                 <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; border: 3px solid var(--gold); background: #000;">
-                    <iframe
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"
-                        src="https://www.youtube.com/embed/_hoiArXF1k8?controls=1&modestbranding=1&rel=0&playsinline=1"
-                        title="Video de la Fiesta"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
+                    <div id="youtube-player-fiesta" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
                 </div>
             </div>
         </section>
@@ -1497,6 +1476,75 @@
         audio.addEventListener('pause', () => {
             playPauseBtn.innerHTML = playIcon;
         });
+    </script>
+
+    <!-- YouTube Player API -->
+    <script>
+        var playerNina, playerSesion, playerFiesta;
+
+        function onYouTubeIframeAPIReady() {
+            // Video 1: De Niña a Grande (autoplay, mute, loop)
+            playerNina = new YT.Player('youtube-player-nina', {
+                videoId: 'Cj2tLALHlWA',
+                playerVars: { 'autoplay': 1, 'mute': 1, 'loop': 1, 'playlist': 'Cj2tLALHlWA', 'controls': 1, 'modestbranding': 1, 'rel': 0, 'playsinline': 1 },
+                events: {
+                    'onReady': function(e) { onPlayerReady(e, playerNina); },
+                    'onStateChange': function(e) { onPlayerStateChange(e, playerNina); }
+                }
+            });
+
+            // Video 2: Mi Sesión de Fotos (autoplay, mute, loop)
+            playerSesion = new YT.Player('youtube-player-sesion', {
+                videoId: 'f2MhRgukup0',
+                playerVars: { 'autoplay': 1, 'mute': 1, 'loop': 1, 'playlist': 'f2MhRgukup0', 'controls': 1, 'modestbranding': 1, 'rel': 0, 'playsinline': 1 },
+                events: {
+                    'onReady': function(e) { onPlayerReady(e, playerSesion); },
+                    'onStateChange': function(e) { onPlayerStateChange(e, playerSesion); }
+                }
+            });
+
+            // Video 3: Video de la Fiesta (sin autoplay)
+            playerFiesta = new YT.Player('youtube-player-fiesta', {
+                videoId: '_hoiArXF1k8',
+                playerVars: { 'controls': 1, 'modestbranding': 1, 'rel': 0, 'playsinline': 1 },
+                events: {
+                    'onReady': function(e) { onPlayerReady(e, playerFiesta); },
+                    'onStateChange': function(e) { onPlayerStateChange(e, playerFiesta); }
+                }
+            });
+        }
+
+        function onPlayerReady(event, player) {
+            var availableQualities = player.getAvailableQualityLevels();
+            if (availableQualities.indexOf('hd1080') !== -1) {
+                player.setPlaybackQuality('hd1080');
+            } else if (availableQualities.indexOf('hd720') !== -1) {
+                player.setPlaybackQuality('hd720');
+            } else if (availableQualities.indexOf('large') !== -1) {
+                player.setPlaybackQuality('large');
+            }
+        }
+
+        function onPlayerStateChange(event, player) {
+            if (event.data == YT.PlayerState.PLAYING || event.data == YT.PlayerState.BUFFERING) {
+                var currentQuality = player.getPlaybackQuality();
+                if (currentQuality !== 'hd1080' && currentQuality !== 'hd720') {
+                    var availableQualities = player.getAvailableQualityLevels();
+                    if (availableQualities.indexOf('hd1080') !== -1) {
+                        player.setPlaybackQuality('hd1080');
+                    } else if (availableQualities.indexOf('hd720') !== -1) {
+                        player.setPlaybackQuality('hd720');
+                    }
+                }
+            }
+        }
+
+        if (!window.YT) {
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
     </script>
 </body>
 </html>
